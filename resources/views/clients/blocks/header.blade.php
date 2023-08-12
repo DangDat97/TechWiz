@@ -83,13 +83,13 @@
                       <a href="#">Shop</a>
                       <ul>
                         @php
-                                $types = \App\Models\Type::all();
+                                $Categories = \App\Models\Category::all();
 
                         @endphp
-                        @foreach ($types as $type)
+                        @foreach ($Categories as $Category)
                             <li>
-                                <a href=" {{ route('Accessories').'?type='.$type->id
-                                }}">{{ $type->name }}</a>
+                                <a href=" {{ route('Accessories').'?type='.$Category->id
+                                }}">{{ $Category->name }}</a>
                             </li>
                         @endforeach
 

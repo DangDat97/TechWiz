@@ -39,8 +39,8 @@
                                         <label class="pb-1" for="type_id">Choose a Type:</label>
 
                                         <select class="form-control form-control-solid" name="type_id" id="type_id">
-                                            @foreach ($types as $type)
-                                                <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                            @foreach ($category as $categories)
+                                                <option value="{{ $categories->id }}">{{ $categories->name }}</option>
                                             @endforeach
 
 

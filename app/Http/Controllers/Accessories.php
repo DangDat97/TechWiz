@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Accessory;
 use App\Models\Type;
+use App\Models\Category;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -123,8 +124,8 @@ class Accessories extends Controller
 
     public function createAccessories(){
 
-        $types=Type::all();
-        return view('admins.accessory.createAccessories',compact('types'));
+        $category=Category::all();
+        return view('admins.accessory.createAccessories',compact('category'));
     }
 
 

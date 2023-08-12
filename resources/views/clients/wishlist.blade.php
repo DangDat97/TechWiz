@@ -49,10 +49,10 @@
                                 <tr class="row">
                                         <td class="cart-product-remove col-3 pl-3"><a href="{{URL::to('deleteWishList/'.$cartItem->id)}}">x</a></td>
                                         <td class="cart-product-image col-3">
-                                            <a href="product-details.html"><img src="{{ $cartItem->image}}" alt="#"></a>
+                                            <a href="#"><img src="{{ $cartItem->image}}" alt="#"></a>
                                         </td>
                                         <td class="cart-product-info col-3">
-                                            <h4><a href="product-details.html" style="width= 50px">{{substr($cartItem->name,0,30)}}</a></h4>
+                                            <h4><a href="#" style="width= 50px">{{substr($cartItem->name,0,30)}}</a></h4>
                                         </td>
                                         <td class="cart-product-price col-3 text-center">{{$cartItem->price}}</td>
 

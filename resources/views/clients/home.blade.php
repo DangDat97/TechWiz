@@ -23,7 +23,7 @@
                                 <p>Thank you for your visit.</p>
                               </div>
                               <div class="btn-wrapper animated">
-                                <a href="service.html" class="theme-btn-1 btn btn-round">Shop Now</a>
+                                <a href="{{ route('Accessories') }}" class="theme-btn-1 btn btn-round">Shop Now</a>
                               </div>
                             </div>
                           </div>
@@ -52,7 +52,7 @@
                                     .</p>
                               </div>
                               <div class="btn-wrapper animated">
-                                <a href="service.html" class="theme-btn-1 btn btn-round">Shop Now</a>
+                                <a href="{{ route('Accessories') }}" class="theme-btn-1 btn btn-round">Shop Now</a>
                               </div>
                             </div>
                           </div>

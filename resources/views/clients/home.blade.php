@@ -8,7 +8,7 @@
         <div class="col-lg-12">
           <div class="ltn__slide-two-active slick-slide-arrow-1 slick-slide-dots-1 arrow-white--">
             <!-- ltn__slide-item  -->
-            <div class="ltn__slide-item ltn__slide-item-8 ltn__slide-item-9 text-color-white---- bg-image bg-overlay-theme-black-80---" data-bs-bg="{{asset('clients_assets/images/3.jpg')}}">
+            <div class="ltn__slide-item ltn__slide-item-8 ltn__slide-item-9 text-color-white---- bg-image bg-overlay-theme-black-80---" data-bs-bg="{{asset('clients_assets/images/slider3.jpg')}}">
               <div class="ltn__slide-item-inner">
                 <div class="container">
                   <div class="row">
@@ -20,7 +20,7 @@
                               <h6 class="slide-sub-title ltn__secondary-color slide-title-line-2 animated">Flower & Gift</h6>
                               <h1 class="slide-title animated ">Get Up To 75%</h1>
                               <div class="slide-brief animated">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                                <p>Thank you for your visit.</p>
                               </div>
                               <div class="btn-wrapper animated">
                                 <a href="service.html" class="theme-btn-1 btn btn-round">Shop Now</a>
@@ -29,14 +29,14 @@
                           </div>
                         </div>
                       </div>
-                      <!-- <div class="slide-item-img"><img src="img/slider/41-1.png" alt="#"><span class="call-to-circle-1"></span></div> -->
+                      <!-- <div class="slide-item-img"><img src="{{asset('clients_assets/images/product8.png')}}slider/41-1.png" alt="#"><span class="call-to-circle-1"></span></div> -->
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <!-- ltn__slide-item  -->
-            <div class="ltn__slide-item ltn__slide-item-8 ltn__slide-item-9 text-color-white---- bg-image bg-overlay-theme-black-80---" data-bs-bg="{{asset('clients_assets/images/1.jpg')}}">
+            <div class="ltn__slide-item ltn__slide-item-8 ltn__slide-item-9 text-color-white---- bg-image bg-overlay-theme-black-80---" data-bs-bg="{{asset('clients_assets/images/slider1.jpg')}}">
               <div class="ltn__slide-item-inner">
                 <div class="container">
                   <div class="row">
@@ -48,7 +48,8 @@
                               <h6 class="slide-sub-title ltn__secondary-color slide-title-line-2 animated">Flower & Gift</h6>
                               <h1 class="slide-title animated ">Get Up To 75%</h1>
                               <div class="slide-brief animated">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                                <p>Happiness is the seed \n Happiness shared is the flower
+                                    .</p>
                               </div>
                               <div class="btn-wrapper animated">
                                 <a href="service.html" class="theme-btn-1 btn btn-round">Shop Now</a>
@@ -57,7 +58,7 @@
                           </div>
                         </div>
                       </div>
-                      <!-- <div class="slide-item-img"><img src="img/slider/41-1.png" alt="#"><span class="call-to-circle-1"></span></div> -->
+                      <!-- <div class="slide-item-img"><img src="{{asset('clients_assets/images/product8.png')}}slider/41-1.png" alt="#"><span class="call-to-circle-1"></span></div> -->
                     </div>
                   </div>
                 </div>
@@ -135,7 +136,7 @@
                     <div class="ltn__product-item ltn__product-item-4">
                       <div class="product-img">
                         <a href="product-details.html">
-                          <img src="img/product/2.png" alt="#">
+                          <img src="{{asset('clients_assets/images/product2.png')}}" alt="#">
                         </a>
                         <div class="product-badge">
                           <ul>
@@ -207,7 +208,7 @@
                     <div class="ltn__product-item ltn__product-item-4">
                       <div class="product-img">
                         <a href="product-details.html">
-                          <img src="img/product/9.png" alt="#">
+                          <img src="{{asset('clients_assets/images/product9.png')}}" alt="#">
                         </a>
                         <div class="product-badge">
                           <ul>
@@ -278,7 +279,7 @@
                     <div class="ltn__product-item ltn__product-item-4">
                       <div class="product-img">
                         <a href="product-details.html">
-                          <img src="img/product/8.png" alt="#">
+                          <img src="{{asset('clients_assets/images/product8.png')}}" alt="#">
                         </a>
                         <div class="product-badge">
                           <ul>
@@ -350,7 +351,7 @@
                     <div class="ltn__product-item ltn__product-item-4">
                       <div class="product-img">
                         <a href="product-details.html">
-                          <img src="img/product/5.png" alt="#">
+                          <img src="{{asset('clients_assets/images/product5.png')}}" alt="#">
                         </a>
                         <div class="product-badge">
                           <ul>
@@ -421,7 +422,7 @@
                     <div class="ltn__product-item ltn__product-item-4">
                       <div class="product-img">
                         <a href="product-details.html">
-                          <img src="img/product/7.png" alt="#">
+                          <img src="{{asset('clients_assets/images/product7.png')}}" alt="#">
                         </a>
                         <div class="product-badge">
                           <ul>
@@ -499,7 +500,7 @@
                     <div class="ltn__product-item ltn__product-item-4">
                       <div class="product-img">
                         <a href="product-details.html">
-                          <img src="img/product/5.png" alt="#">
+                          <img src="{{asset('clients_assets/images/product5.png')}}" alt="#">
                         </a>
                         <div class="product-badge">
                           <ul>
@@ -570,7 +571,7 @@
                     <div class="ltn__product-item ltn__product-item-4">
                       <div class="product-img">
                         <a href="product-details.html">
-                          <img src="img/product/7.png" alt="#">
+                          <img src="{{asset('clients_assets/images/product7.png')}}" alt="#">
                         </a>
                         <div class="product-badge">
                           <ul>
@@ -641,7 +642,7 @@
                     <div class="ltn__product-item ltn__product-item-4">
                       <div class="product-img">
                         <a href="product-details.html">
-                          <img src="img/product/2.png" alt="#">
+                          <img src="{{asset('clients_assets/images/product2.png')}}" alt="#">
                         </a>
                         <div class="product-badge">
                           <ul>
@@ -713,7 +714,7 @@
                     <div class="ltn__product-item ltn__product-item-4">
                       <div class="product-img">
                         <a href="product-details.html">
-                          <img src="img/product/9.png" alt="#">
+                          <img src="{{asset('clients_assets/images/product9.png')}}" alt="#">
                         </a>
                         <div class="product-badge">
                           <ul>
@@ -784,7 +785,7 @@
                     <div class="ltn__product-item ltn__product-item-4">
                       <div class="product-img">
                         <a href="product-details.html">
-                          <img src="img/product/8.png" alt="#">
+                          <img src="{{asset('clients_assets/images/product8.png')}}" alt="#">
                         </a>
                         <div class="product-badge">
                           <ul>
@@ -863,7 +864,7 @@
                     <div class="ltn__product-item ltn__product-item-4">
                       <div class="product-img">
                         <a href="product-details.html">
-                          <img src="img/product/8.png" alt="#">
+                          <img src="{{asset('clients_assets/images/product8.png')}}" alt="#">
                         </a>
                         <div class="product-badge">
                           <ul>
@@ -936,7 +937,7 @@
                     <div class="ltn__product-item ltn__product-item-4">
                       <div class="product-img">
                         <a href="product-details.html">
-                          <img src="img/product/2.png" alt="#">
+                          <img src="{{asset('clients_assets/images/product2.png')}}" alt="#">
                         </a>
                         <div class="product-badge">
                           <ul>
@@ -1008,7 +1009,7 @@
                     <div class="ltn__product-item ltn__product-item-4">
                       <div class="product-img">
                         <a href="product-details.html">
-                          <img src="img/product/9.png" alt="#">
+                          <img src="{{asset('clients_assets/images/product9.png')}}" alt="#">
                         </a>
                         <div class="product-badge">
                           <ul>
@@ -1079,7 +1080,7 @@
                     <div class="ltn__product-item ltn__product-item-4">
                       <div class="product-img">
                         <a href="product-details.html">
-                          <img src="img/product/5.png" alt="#">
+                          <img src="{{asset('clients_assets/images/product5.png')}}" alt="#">
                         </a>
                         <div class="product-badge">
                           <ul>
@@ -1150,7 +1151,7 @@
                     <div class="ltn__product-item ltn__product-item-4">
                       <div class="product-img">
                         <a href="product-details.html">
-                          <img src="img/product/7.png" alt="#">
+                          <img src="{{asset('clients_assets/images/product7.png')}}" alt="#">
                         </a>
                         <div class="product-badge">
                           <ul>
@@ -1233,7 +1234,7 @@
           <div class="ltn__banner-item">
             <div class="ltn__banner-img">
               <a href="shop.html">
-                <img src="img/banner/8.jpg" alt="Banner Image">
+                <img src="{{asset('clients_assets/images/banner8.jpg')}}" alt="Banner Image">
               </a>
             </div>
           </div>
@@ -1242,7 +1243,7 @@
           <div class="ltn__banner-item">
             <div class="ltn__banner-img">
               <a href="shop.html">
-                <img src="img/banner/9.jpg" alt="Banner Image">
+                <img src="{{asset('clients_assets/images/banner9.jpg')}}" alt="Banner Image">
               </a>
             </div>
           </div>
@@ -1267,7 +1268,7 @@
           <div class="ltn__product-item ltn__product-item-4">
             <div class="product-img">
               <a href="product-details.html">
-                <img src="img/product/7.png" alt="#">
+                <img src="{{asset('clients_assets/images/product7.png')}}" alt="#">
               </a>
               <div class="product-badge">
                 <ul>
@@ -1339,7 +1340,7 @@
           <div class="ltn__product-item ltn__product-item-4">
             <div class="product-img">
               <a href="product-details.html">
-                <img src="img/product/4.png" alt="#">
+                <img src="{{asset('clients_assets/images/product4.png')}}" alt="#">
               </a>
               <div class="product-badge">
                 <ul>
@@ -1410,7 +1411,7 @@
           <div class="ltn__product-item ltn__product-item-4">
             <div class="product-img">
               <a href="product-details.html">
-                <img src="img/product/6.png" alt="#">
+                <img src="{{asset('clients_assets/images/product6.png')}}" alt="#">
               </a>
               <div class="product-badge">
                 <ul>
@@ -1482,7 +1483,7 @@
           <div class="ltn__product-item ltn__product-item-4">
             <div class="product-img">
               <a href="product-details.html">
-                <img src="img/product/10.png" alt="#">
+                <img src="{{asset('clients_assets/images/product10.png')}}" alt="#">
               </a>
               <div class="product-badge">
                 <ul>
@@ -1553,7 +1554,7 @@
           <div class="ltn__product-item ltn__product-item-4">
             <div class="product-img">
               <a href="product-details.html">
-                <img src="img/product/12.png" alt="#">
+                <img src="{{asset('clients_assets/images/product12.png')}}" alt="#">
               </a>
               <div class="product-badge">
                 <ul>
@@ -1632,7 +1633,7 @@
           <div class="ltn__feature-item-box-wrap ltn__feature-item-box-wrap-2  ltn__border section-bg-6">
             <div class="ltn__feature-item ltn__feature-item-8">
               <div class="ltn__feature-icon">
-                <img src="img/icons/svg/8-trolley.svg" alt="#">
+                <img src="{{asset('clients_assets/images/8-trolley.svg')}}" alt="#">
               </div>
               <div class="ltn__feature-info">
                 <h4>Free shipping</h4>
@@ -1641,7 +1642,7 @@
             </div>
             <div class="ltn__feature-item ltn__feature-item-8">
               <div class="ltn__feature-icon">
-                <img src="img/icons/svg/9-money.svg" alt="#">
+                <img src="{{asset('clients_assets/images/9-money.svg')}}" alt="#">
               </div>
               <div class="ltn__feature-info">
                 <h4>15 days returns</h4>
@@ -1650,7 +1651,7 @@
             </div>
             <div class="ltn__feature-item ltn__feature-item-8">
               <div class="ltn__feature-icon">
-                <img src="img/icons/svg/10-credit-card.svg" alt="#">
+                <img src="{{asset('clients_assets/images/10-credit-card.svg')}}" alt="#">
               </div>
               <div class="ltn__feature-info">
                 <h4>Secure checkout</h4>
@@ -1659,7 +1660,7 @@
             </div>
             <div class="ltn__feature-item ltn__feature-item-8">
               <div class="ltn__feature-icon">
-                <img src="img/icons/svg/11-gift-card.svg" alt="#">
+                <img src="{{asset('clients_assets/images/11-gift-card.svg')}}" alt="#">
               </div>
               <div class="ltn__feature-info">
                 <h4>Offer & gift here</h4>

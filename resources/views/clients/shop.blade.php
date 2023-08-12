@@ -1,6 +1,4 @@
 @extends('clients.layouts.app')
-
-
 @section('content')
     <!-- BREADCRUMB AREA START -->
     <div class="ltn__breadcrumb-area ltn__breadcrumb-area-4 ltn__breadcrumb-color-white---">
@@ -57,11 +55,11 @@
                         <div class="tab-pane fade active show" id="liton_product_grid">
                             <div class="ltn__product-tab-content-inner ltn__product-grid-view">
                                 <div class="row">
-                                    <!-- ltn__product-item -->
+                                 @foreach ($accessories as $accessory)   
                                     <div class="col-xl-4 col-sm-6 col-12">
                                         <div class="ltn__product-item text-center">
                                             <div class="product-img">
-                                                <a href="product-details.html"><img src="img/product/2.png" alt="#"></a>
+                                                <a href="{{URL::to('single/accessory/'.$accessory->id)}}"><img src="{{$accessory->image}}" style="max-width: 263px; height: 341px" alt="#"></a>
                                                 <div class="product-badge">
                                                     <ul>
                                                         <li class="badge-1">Hot</li>
@@ -89,25 +87,30 @@
                                                 </div>
                                             </div>
                                             <div class="product-info">
-                                                <h2 class="product-title"><a href="product-details.html">Premium Joyful</a></h2>
+                                                <h2 class="product-title">
+                                                    <a href="{{URL::to('single/accessory/'.$accessory->id)}}">{{ substr($accessory->name,0,30)}}</a>
+                                                </h2>
                                                 <div class="product-price">
-                                                    <span>$16</span>
+                                                    <span>${{{$accessory->price}}}</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <!--  -->
+                                    @endforeach   <!--  -->
                                 </div>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="liton_product_list">
                             <div class="ltn__product-tab-content-inner ltn__product-list-view">
                                 <div class="row">
+
+
+                                    @foreach ($accessories as $accessory)  
                                     <!-- ltn__product-item -->
                                     <div class="col-lg-12">
                                         <div class="ltn__product-item">
                                             <div class="product-img">
-                                                <a href="product-details.html"><img src="img/product/2.png" alt="#"></a>
+                                                <a href="{{URL::to('single/accessory/'.$accessory->id)}}"><img src="{{$accessory->image}}" style="max-width: 390px; max-heigh:400px" alt="#"></a>
                                                 <div class="product-badge">
                                                     <ul>
                                                         <li class="badge-1">Hot</li>
@@ -115,7 +118,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-info">
-                                                <h2 class="product-title"><a href="product-details.html">Red Rose Bouquet</a></h2>
+                                                <h2 class="product-title"><a href="{{URL::to('single/accessory/'.$accessory->id)}}">{{$accessory->name}}</a></h2>
                                                 <div class="product-price">
                                                     <span>$16</span>
                                                 </div>
@@ -129,7 +132,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="product-brief">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae asperiores sit odit nesciunt,  aliquid, deleniti non et ut dolorem!</p>
+                                                    <p>{{ substr($accessory->use,0,200) }}</p>
                                                 </div>
                                                 <div class="product-hover-action product-hover-action-2">
                                                     <ul>
@@ -145,7 +148,7 @@
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
+                                                            <a href= "" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
                                                                 <i class="icon-shuffle"></i>
                                                             </a>
                                                         </li>
@@ -155,6 +158,10 @@
                                         </div>
                                     </div>
                                     <!--  -->
+
+                                    @endforeach
+
+
                                 </div>
                             </div>
                         </div>
@@ -176,8 +183,8 @@
                     <aside class="sidebar ltn__shop-sidebar">
                         <!-- Search Widget -->
                         <div class="widget ltn__search-widget">
-                            <form action="#">
-                                <input type="text" name="search" placeholder="Search your keyword...">
+                            <form action="{{ route('Accessories') }}">
+                                <input type="text" name="title" placeholder="Search your keyword...">
                                 <button type="submit"><i class="icon-magnifier"></i></button>
                             </form>
                         </div>
@@ -196,154 +203,14 @@
                         <div class="widget ltn__menu-widget">
                             <h4 class="ltn__widget-title">categories</h4>
                             <ul>
-                                <li><a href="#">Clothing</a></li>
-                                <li><a href="#">Bags</a></li>
-                                <li><a href="#">Shoes</a></li>
-                                <li><a href="#">Jewelry</a></li>
-                                <li><a href="#">Accessories</a></li>
-                                <li><a href="#">Food / Drink Store</a></li>
-                                <li><a href="#">Gift Store</a></li>
-                                <li><a href="#">Accessories</a></li>
-                                <li><a href="#">Watch</a></li>
-                                <li><a href="#">Uncategorized</a></li>
-                                <li><a href="#">Other</a></li>
+                                @foreach ($types as $type)  
+                                <li><a href="{{ route('Accessories').'?type='.$type->id }}" >{{strtoupper($type->name)}}</a></li>
+                                @endforeach
                             </ul>
                         </div>
-                        <!-- Color Widget -->
-                        <div class="widget ltn__color-widget">
-                            <h4 class="ltn__widget-title">Color</h4>
-                            <ul>
-                                <li class="theme"><a href="#"></a></li>
-                                <li class="green-2"><a href="#"></a></li>
-                                <li class="blue-2"><a href="#"></a></li>
-                                <li class="white"><a href="#"></a></li>
-                                <li class="red"><a href="#"></a></li>
-                                <li class="yellow"><a href="#"></a></li>
 
-                                <!-- <li class="black"><a href="#"></a></li>
-                                <li class="silver"><a href="#"></a></li>
-                                <li class="gray"><a href="#"></a></li>
-                                <li class="maroon"><a href="#"></a></li>
-                                <li class="olive"><a href="#"></a></li>
-                                <li class="lime"><a href="#"></a></li>
-                                <li class="aqua"><a href="#"></a></li>
-                                <li class="teal"><a href="#"></a></li>
-                                <li class="blue"><a href="#"></a></li>
-                                <li class="navy"><a href="#"></a></li>
-                                <li class="fuchsia"><a href="#"></a></li>
-                                <li class="purple"><a href="#"></a></li>
-                                <li class="pink"><a href="#"></a></li>
-                                <li class="nude"><a href="#"></a></li>
-                                <li class="orange"><a href="#"></a></li> -->
-                            </ul>
-                        </div>
-                        <!-- Size Widget -->
-                        <div class="widget ltn__size-widget">
-                            <h4 class="ltn__widget-title">Size</h4>
-                            <ul>
-                                <li><a href="#">S</a></li>
-                                <li><a href="#">M</a></li>
-                                <li><a href="#">L</a></li>
-                                <li><a href="#">XL</a></li>
-                                <li><a href="#">XXL</a></li>
-                            </ul>
-                        </div>
-                        <!-- Tagcloud Widget -->
-                        <div class="widget ltn__tagcloud-widget">
-                            <h4 class="ltn__widget-title">Tags</h4>
-                            <ul>
-                                <li><a href="#">Popular</a></li>
-                                <li><a href="#">desgin</a></li>
-                                <li><a href="#">ux</a></li>
-                                <li><a href="#">usability</a></li>
-                                <li><a href="#">develop</a></li>
-                                <li><a href="#">icon</a></li>
-                                <li><a href="#">Car</a></li>
-                                <li><a href="#">Service</a></li>
-                                <li><a href="#">Repairs</a></li>
-                                <li><a href="#">Auto Parts</a></li>
-                                <li><a href="#">Oil</a></li>
-                                <li><a href="#">Dealer</a></li>
-                                <li><a href="#">Oil Change</a></li>
-                                <li><a href="#">Body Color</a></li>
-                            </ul>
-                        </div>
-                        <!-- Top Rated Product Widget -->
-                        <div class="widget ltn__top-rated-product-widget d-none">
-                            <h4 class="ltn__widget-title ltn__widget-title-border---">Top Rated Product</h4>
-                            <ul>
-                                <li>
-                                    <div class="top-rated-product-item clearfix">
-                                        <div class="top-rated-product-img">
-                                            <a href="product-details.html"><img src="img/product/1.png" alt="#"></a>
-                                        </div>
-                                        <div class="top-rated-product-info">
-                                            <div class="product-ratting">
-                                                <ul>
-                                                    <li><a href="#"><i class="icon-star"></i></a></li>
-                                                    <li><a href="#"><i class="icon-star"></i></a></li>
-                                                    <li><a href="#"><i class="icon-star"></i></a></li>
-                                                    <li><a href="#"><i class="icon-star"></i></a></li>
-                                                    <li><a href="#"><i class="icon-star"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <h6><a href="product-details.html">Mixel Solid Seat Cover</a></h6>
-                                            <div class="product-price">
-                                                <span>$49.00</span>
-                                                <del>$65.00</del>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="top-rated-product-item clearfix">
-                                        <div class="top-rated-product-img">
-                                            <a href="product-details.html"><img src="img/product/2.png" alt="#"></a>
-                                        </div>
-                                        <div class="top-rated-product-info">
-                                            <div class="product-ratting">
-                                                <ul>
-                                                    <li><a href="#"><i class="icon-star"></i></a></li>
-                                                    <li><a href="#"><i class="icon-star"></i></a></li>
-                                                    <li><a href="#"><i class="icon-star"></i></a></li>
-                                                    <li><a href="#"><i class="icon-star"></i></a></li>
-                                                    <li><a href="#"><i class="icon-star"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <h6><a href="product-details.html">Brake Conversion Kit</a></h6>
-                                            <div class="product-price">
-                                                <span>$49.00</span>
-                                                <del>$65.00</del>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="top-rated-product-item clearfix">
-                                        <div class="top-rated-product-img">
-                                            <a href="product-details.html"><img src="img/product/3.png" alt="#"></a>
-                                        </div>
-                                        <div class="top-rated-product-info">
-                                            <div class="product-ratting">
-                                                <ul>
-                                                    <li><a href="#"><i class="icon-star"></i></a></li>
-                                                    <li><a href="#"><i class="icon-star"></i></a></li>
-                                                    <li><a href="#"><i class="icon-star"></i></a></li>
-                                                    <li><a href="#"><i class="icon-star"></i></a></li>
-                                                    <li><a href="#"><i class="icon-star"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <h6><a href="product-details.html">Coil Spring Conversion</a></h6>
-                                            <div class="product-price">
-                                                <span>$49.00</span>
-                                                <del>$65.00</del>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- Banner Widget -->
+
+                        
                         <div class="widget ltn__banner-widget d-none">
                             <a href="shop.html"><img src="#" alt="#"></a>
                         </div>

@@ -17,21 +17,6 @@
     </head>
     <body class="nav-fixed">
         @include('admins.blocks.nav')
-        {{-- <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
-                @include('admins.blocks.siderbar')
-                <div id="layoutSidenav_content">
-                    <main>
-                        @include('admins.blocks.header')
-
-                        @yield('content')
-                    </main>
-                    @include('admins.blocks.footer')
-                </div>
-
-            </div>
-
-        </div> --}}
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 @include('admins.blocks.siderbar')

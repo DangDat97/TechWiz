@@ -1,8 +1,6 @@
 @extends('clients.layouts.app')
-
-
 @section('content')
- <!-- BREADCRUMB AREA START -->
+
  <div class="ltn__breadcrumb-area ltn__breadcrumb-area-4 ltn__breadcrumb-color-white---">
     <div class="container">
         <div class="row">
@@ -29,77 +27,53 @@
             <div class="col-lg-12">
                 <div class="shoping-cart-inner">
                     <div class="shoping-cart-table table-responsive">
+                       @if (session()->has('success'))
+                           <div>
+                            {{session()->get('success')}}
+                           </div>
+                       @endif
                         <table class="table">
-                            <!-- <thead>
+                            <thead>
                                 <th class="cart-product-remove">Remove</th>
                                 <th class="cart-product-image">Image</th>
                                 <th class="cart-product-info">Product</th>
                                 <th class="cart-product-price">Price</th>
                                 <th class="cart-product-quantity">Quantity</th>
                                 <th class="cart-product-subtotal">Subtotal</th>
-                            </thead> -->
+                            </thead>
                             <tbody>
+                                @php
+                                    $total=0;
+                                @endphp
+                                @foreach ($cartItems as $cartItem)
                                 <tr>
-                                    <td class="cart-product-remove">x</td>
-                                    <td class="cart-product-image">
-                                        <a href="product-details.html"><img src="img/product/1.png" alt="#"></a>
-                                    </td>
-                                    <td class="cart-product-info">
-                                        <h4><a href="product-details.html">Brake Conversion Kit</a></h4>
-                                    </td>
-                                    <td class="cart-product-price">$149.00</td>
-                                    <td class="cart-product-quantity">
-                                        <div class="cart-plus-minus">
-                                            <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
-                                        </div>
-                                    </td>
-                                    <td class="cart-product-subtotal">$298.00</td>
+                                        <td class="cart-product-remove"><a href="{{URL::to('deleteCartItem/'.$cartItem->id)}}">x</a></td>
+                                        <td class="cart-product-image">
+                                            <a href="product-details.html"><img src="{{ $cartItem->image}}" alt="#"></a>
+                                        </td>
+                                        <td class="cart-product-info">
+                                            <h4><a href="product-details.html" style="width= 50px">{{substr($cartItem->name,0,30)}}</a></h4>
+                                        </td>
+                                        <td class="cart-product-price">{{$cartItem->price}}</td>
+                                        <td class="cart-product-quantity">
+                                            <form action="{{URL::to('updateCart')}}" method="POST">
+                                                @csrf
+                                                <div class="cart-plus-minus">
+                                                    <input type="number" value="{{$cartItem->quanity}}" name="quantity" class="cart-plus-minus-box">
+                                                </div>
+                                                <input type="hidden" name="id" value="{{$cartItem->id}}">
+                                                <input type="submit" name="update" value="Update">
+                                            </form>
+                                        </td>
+                                        <td class="cart-product-subtotal">${{$cartItem->price*$cartItem->quanity}}</td>
                                 </tr>
-                                <tr>
-                                    <td class="cart-product-remove">x</td>
-                                    <td class="cart-product-image">
-                                        <a href="product-details.html"><img src="img/product/2.png" alt="#"></a>
-                                    </td>
-                                    <td class="cart-product-info">
-                                        <h4><a href="product-details.html">OE Replica Wheels</a></h4>
-                                    </td>
-                                    <td class="cart-product-price">$85.00</td>
-                                    <td class="cart-product-quantity">
-                                        <div class="cart-plus-minus">
-                                            <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
-                                        </div>
-                                    </td>
-                                    <td class="cart-product-subtotal">$170.00</td>
-                                </tr>
-                                <tr>
-                                    <td class="cart-product-remove">x</td>
-                                    <td class="cart-product-image">
-                                        <a href="product-details.html"><img src="img/product/3.png" alt="#"></a>
-                                    </td>
-                                    <td class="cart-product-info">
-                                        <h4><a href="product-details.html">Wheel Bearing Retainer</a></h4>
-                                    </td>
-                                    <td class="cart-product-price">$75.00</td>
-                                    <td class="cart-product-quantity">
-                                        <div class="cart-plus-minus">
-                                            <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
-                                        </div>
-                                    </td>
-                                    <td class="cart-product-subtotal">$150.00</td>
-                                </tr>
-                                <tr class="cart-coupon-row">
-                                    <td colspan="6">
-                                        <div class="cart-coupon">
-                                            <input type="text" name="cart-coupon" placeholder="Coupon code">
-                                            <button type="submit" class="btn theme-btn-2 btn-effect-2">Apply Coupon</button>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <button type="submit" class="btn theme-btn-2 btn-effect-2-- disabled">Update Cart</button>
-                                    </td>
-                                </tr>
+                                @php
+                                     $total+=($cartItem->price*$cartItem->quanity);
+                                @endphp
+                                @endforeach
                             </tbody>
                         </table>
+                        
                     </div>
                     <div class="shoping-cart-total mt-50">
                         <h4>Cart Totals</h4>
@@ -107,7 +81,7 @@
                             <tbody>
                                 <tr>
                                     <td>Cart Subtotal</td>
-                                    <td>$618.00</td>
+                                    <td>${{$total}}</td>
                                 </tr>
                                 <tr>
                                     <td>Shipping and Handing</td>
@@ -119,12 +93,12 @@
                                 </tr>
                                 <tr>
                                     <td><strong>Order Total</strong></td>
-                                    <td><strong>$633.00</strong></td>
+                                    <td><strong>${{$total + 15}}</strong></td>
                                 </tr>
                             </tbody>
                         </table>
                         <div class="btn-wrapper text-right">
-                            <a href="checkout.html" class="theme-btn-1 btn btn-effect-1">Proceed to checkout</a>
+                            <a href="/checkout" class="theme-btn-1 btn btn-effect-1">Proceed to checkout</a>
                         </div>
                     </div>
                 </div>

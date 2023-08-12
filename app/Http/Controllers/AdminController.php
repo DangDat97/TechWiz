@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
@@ -17,14 +19,14 @@ class AdminController extends Controller
 
     public function users()
     {
-        // $users = User::where('role', '!=', 1)->get();
-        $users = User::all();
-        return view('admins.account', compact('users'));
+        $userCount = DB::table('users')->where('role', '!=', 1)->count();
+        $users = User::where('role', '!=', 1)->get();
+        return view('admins.account', compact(['users', 'userCount']));
     }
 
     public function createUser()
     {
-        return view('admin.create_user');
+        return view('admins.create_user');
     }
 
     public function store(Request $request)
@@ -43,22 +45,27 @@ class AdminController extends Controller
     }
     public function editUser(User $user)
     {
-        return view('admin.update_user', ['user' => $user]);
+        return view('admins.update_user', ['user' => $user]);
     }
 
     public function updateUser(User $user, Request $request)
     {
-        $request->validate([
+
+
+        $data = $request->validate([
             'name' => 'string|required|min:2',
             'email' => 'string|email|max:100',
             'password' => 'string|required|confirmed|min:6'
         ]);
-        $user = new User;
-        $user->name = $request->name;
+        $data['password'] = Hash::make($request->password);
+        $user->update($data);
 
-        $user->password = Hash::make($request->password);
-        $user->update();
-        $user->save();
+        return redirect(route('superAdminUsers'));
+    }
+
+    public function deleteUser(User $user)
+    {
+        $user->delete();
         return redirect(route('superAdminUsers'));
     }
 
@@ -66,7 +73,7 @@ class AdminController extends Controller
     {
         $users = User::where('role', '!=', 1)->get();
         $roles = Role::all();
-        return view('admin.manage-role', compact(['users', 'roles']));
+        return view('admins.manage-role', compact(['users', 'roles']));
     }
 
     public function updateRole(Request $request)
@@ -75,5 +82,44 @@ class AdminController extends Controller
             'role' => $request->role_id
         ]);
         return redirect()->back();
+    }
+    public function categories()
+    {
+        $categoryCount = Category::count();
+        $categories = Category::all();
+        return view('admins.category', ['categories' => $categories, 'categoryCount' => $categoryCount]);
+    }
+    public function storeCategory(Request $request)
+    {
+        $request->validate([
+            'name' => 'string|required|min:7',
+
+        ]);
+        $category = new Category;
+        $category->name = $request->name;
+        $category->save();
+        return redirect(route('superAdminCatgegries'));
+    }
+    public function createCategory()
+    {
+        return view('admins.create_category');
+    }
+    public function editCategory(Category $category)
+    {
+        return view('admins.edit_category', ['category' => $category]);
+    }
+    public function updateCategory(Category $category, Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'string|required|min:7',
+        ]);
+        $category->update($data);
+
+        return redirect(route('superAdminCatgegries'));
+    }
+    public function deleteCategory(Category $category)
+    {
+        $category->delete();
+        return redirect(route('superAdminCatgegries'));
     }
 }

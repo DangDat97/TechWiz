@@ -95,7 +95,7 @@
           <div class="col logo-column">
             <div class="site-logo">
               <a href="{{route('home')}}">
-                <img src="img/logo.png" alt="Logo">
+                <img src="{{asset('clients_assets/images/logo4.png')}}" style="max-width:120px" alt="Logo">
               </a>
             </div>
           </div>
@@ -114,7 +114,7 @@
                       <a href="#">Shop</a>
                       <ul>
                         <li>
-                          <a href="{{route('shop')}}">Shop</a>
+                          <a href="{{route('Accessories')}}">Shop</a>
                         </li>
                       </ul>
                     </li>
@@ -205,18 +205,24 @@
                           <i class="icon-user"></i>
                         </a>
                         <ul>
-                          <li>
-                            <a href="{{route('login')}}">Sign in</a>
-                          </li>
-                          <li>
-                            <a href="{{route('register')}}">Register</a>
-                          </li>
-                          <li>
-                            <a href="account.html">My Account</a>
-                          </li>
-                          <li>
-                            <a href="{{route('wishlist')}}">Wishlist</a>
-                          </li>
+                        @if (session()->has('id'))
+                            <li>
+                                <a href="/logout">Log Out</a>
+                            </li>
+                            <li>
+                                <a href="account.html">My Account</a>
+                            </li>
+                            <li>
+                                <a href="{{route('wishlist')}}">Wishlist</a>
+                            </li>
+                        @else
+                            <li>
+                                <a href="{{route('login')}}">Sign in</a>
+                            </li>
+                            <li>
+                                <a href="{{route('register')}}">Register</a>
+                            </li>
+                        @endif
                         </ul>
                       </li>
                     </ul>
@@ -232,18 +238,23 @@
                 </li>
                 <li>
                   <!-- mini-cart 2 -->
+                  @if (session()->has('id')!=null)
                   <div class="mini-cart-icon mini-cart-icon-2">
                     <a href="#ltn__utilize-cart-menu" class="ltn__utilize-toggle">
                       <span class="mini-cart-icon">
                         <i class="icon-handbag"></i>
-                        <sup>2</sup>
+                        <sup>
+                         {{session()->get('total_count')}}
+                        </sup>
                       </span>
                       <h6>
                         <span>Your Cart</span>
-                        <span class="ltn__secondary-color">$89.25</span>
+
                       </h6>
                     </a>
                   </div>
+                  @else
+                  @endif
                 </li>
                 <li>
                   <!-- Mobile Menu Button -->
@@ -272,74 +283,43 @@
         <button class="ltn__utilize-close">×</button>
       </div>
       <div class="mini-cart-product-area ltn__scrollbar">
-        <div class="mini-cart-item clearfix">
-          <div class="mini-cart-img">
-            <a href="#">
-              <img src="img/product/1.png" alt="Image">
-            </a>
-            <span class="mini-cart-item-delete">
-              <i class="icon-trash"></i>
-            </span>
-          </div>
-          <div class="mini-cart-info">
-            <h6>
-              <a href="#">Premium Joyful</a>
-            </h6>
-            <span class="mini-cart-quantity">1 x $65.00</span>
-          </div>
-        </div>
-        <div class="mini-cart-item clearfix">
-          <div class="mini-cart-img">
-            <a href="#">
-              <img src="img/product/2.png" alt="Image">
-            </a>
-            <span class="mini-cart-item-delete">
-              <i class="icon-trash"></i>
-            </span>
-          </div>
-          <div class="mini-cart-info">
-            <h6>
-              <a href="#">The White Rose</a>
-            </h6>
-            <span class="mini-cart-quantity">1 x $85.00</span>
-          </div>
-        </div>
-        <div class="mini-cart-item clearfix">
-          <div class="mini-cart-img">
-            <a href="#">
-              <img src="img/product/3.png" alt="Image">
-            </a>
-            <span class="mini-cart-item-delete">
-              <i class="icon-trash"></i>
-            </span>
-          </div>
-          <div class="mini-cart-info">
-            <h6>
-              <a href="#">Red Rose Bouquet</a>
-            </h6>
-            <span class="mini-cart-quantity">1 x $92.00</span>
-          </div>
-        </div>
-        <div class="mini-cart-item clearfix">
-          <div class="mini-cart-img">
-            <a href="#">
-              <img src="img/product/4.png" alt="Image">
-            </a>
-            <span class="mini-cart-item-delete">
-              <i class="icon-trash"></i>
-            </span>
-          </div>
-          <div class="mini-cart-info">
-            <h6>
-              <a href="#">Pink Flower Tree</a>
-            </h6>
-            <span class="mini-cart-quantity">1 x $68.00</span>
-          </div>
-        </div>
+        @if (session()->has('id'))
+
+          @if (session()->get('cart')!=null)
+                @foreach ( session()->get('cart') as $item)
+                  <div class="mini-cart-item clearfix">
+                    <div class="mini-cart-img">
+                      <a href="{{URL::to('single/accessory/'.$item->accessory_id)}}">
+                        <img src="{{$item->image}}" alt="Image">
+                      </a>
+                      <span class="mini-cart-item-delete">
+                        <a href="{{URL::to('deleteCartItem/'.$item->id)}}"><i class="icon-trash"></i></a>
+                      </span>
+                    </div>
+                    <div class="mini-cart-info">
+                      <h6>
+                        <a href="{{URL::to('single/accessory/'.$item->accessory_id)}}">{{substr($item->name,0,30)}}</a>
+                      </h6>
+                      <span class="mini-cart-quantity">{{$item->quanity. ' x $'. $item->price}}</span>
+                    </div>
+                  </div>
+                @endforeach
+            @else
+          @endif
+
+        @else
+
+        @endif
+
+
+
       </div>
       <div class="mini-cart-footer">
         <div class="mini-cart-sub-total">
-          <h5>Subtotal: <span>$310.00</span>
+          <h5>Subtotal:
+            <span>$
+              {{session()->get('total')}}
+            </span>
           </h5>
         </div>
         <div class="btn-wrapper">

@@ -1,6 +1,4 @@
 @extends('clients.layouts.app')
-
-
 @section('content')
  <!-- BREADCRUMB AREA START -->
  <div class="ltn__breadcrumb-area ltn__breadcrumb-area-4 ltn__breadcrumb-color-white---">
@@ -21,8 +19,6 @@
     </div>
 </div>
 <!-- BREADCRUMB AREA END -->
-
-<!-- WISHLIST AREA START -->
 <div class="liton__wishlist-area mb-85">
     <div class="container">
         <div class="row">
@@ -61,5 +57,4 @@
         </div>
     </div>
 </div>
-<!-- WISHLIST AREA START -->
 @endsection

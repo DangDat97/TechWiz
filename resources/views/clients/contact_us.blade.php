@@ -32,8 +32,9 @@
                         <i class="icon-location-pin"></i>
                     </div>
                     <h3>Email Address</h3>
-                    <p>info@webmail.com <br>
-                        jobs@webexample.com</p>
+                    <p>Garden102@gmail.com <br>
+                        TheShop102@gmail.com
+</p>
                 </div>
             </div>
             <div class="col-lg-3">
@@ -42,8 +43,8 @@
                         <i class="icon-phone"></i>
                     </div>
                     <h3>Phone Number</h3>
-                    <p>+1234-567 890 <br>
-                        +09876-543 210</p>
+                    <p>+842219596 <br>
+                        +042219596</p>
                 </div>
             </div>
             <div class="col-lg-3">
@@ -62,8 +63,9 @@
                         <i class="icon-speedometer"></i>
                     </div>
                     <h3>Opening Hours</h3>
-                    <p>Fri to Wed: 6:00 Am to 8:00 Pm <br>
-                        Thursday - Off</p>
+                    <p>Mons - Sun<br>
+                        Sunday closed at 6PM
+</p>
                 </div>
             </div>
         </div>

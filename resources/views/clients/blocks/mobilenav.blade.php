@@ -3,7 +3,7 @@
       <div class="ltn__utilize-menu-head">
         <div class="site-logo">
           <a href="index.html">
-            <img src="img/logo.png" alt="Logo">
+            <img src="{{asset('clients_assets/images/logo4.png')}}" alt="Logo">
           </a>
         </div>
         <button class="ltn__utilize-close">×</button>

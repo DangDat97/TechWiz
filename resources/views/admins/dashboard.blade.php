@@ -1,7 +1,5 @@
 @extends('admins.layouts.app')
 
-
-
 @section('content')
 <div class="container-xl px-4 mt-n10">
     <div class="row">

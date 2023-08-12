@@ -4,37 +4,37 @@
       <div class="row ltn__brand-logo-active">
         <div class="col-lg-12">
           <div class="ltn__brand-logo-item">
-            <img src="img/brand-logo/1.png" alt="Brand Logo">
+            <img src="{{asset('clients_assets/images/brand-logo1.png')}}" alt="Brand Logo">
           </div>
         </div>
         <div class="col-lg-12">
           <div class="ltn__brand-logo-item">
-            <img src="img/brand-logo/2.png" alt="Brand Logo">
+            <img src="{{asset('clients_assets/images/brand-logo2.png')}}" alt="Brand Logo">
           </div>
         </div>
         <div class="col-lg-12">
           <div class="ltn__brand-logo-item">
-            <img src="img/brand-logo/3.png" alt="Brand Logo">
+            <img src="{{asset('clients_assets/images/brand-logo3.png')}}" alt="Brand Logo">
           </div>
         </div>
         <div class="col-lg-12">
           <div class="ltn__brand-logo-item">
-            <img src="img/brand-logo/4.png" alt="Brand Logo">
+            <img src="{{asset('clients_assets/images/brand-logo4.png')}}" alt="Brand Logo">
           </div>
         </div>
         <div class="col-lg-12">
           <div class="ltn__brand-logo-item">
-            <img src="img/brand-logo/5.png" alt="Brand Logo">
+            <img src="{{asset('clients_assets/images/brand-logo5.png')}}" alt="Brand Logo">
           </div>
         </div>
         <div class="col-lg-12">
           <div class="ltn__brand-logo-item">
-            <img src="img/brand-logo/1.png" alt="Brand Logo">
+            <img src="{{asset('clients_assets/images/brand-logo1.png')}}" alt="Brand Logo">
           </div>
         </div>
         <div class="col-lg-12">
           <div class="ltn__brand-logo-item">
-            <img src="img/brand-logo/2.png" alt="Brand Logo">
+            <img src="{{asset('clients_assets/images/brand-logo2.png')}}" alt="Brand Logo">
           </div>
         </div>
       </div>
@@ -146,7 +146,7 @@
               <h4 class="footer-title">About Our Shop</h4>
               <div class="footer-logo d-none">
                 <div class="site-logo">
-                  <img src="img/logo.png" alt="Logo">
+                  <img src="{{asset('clients_assets/images/logo4.png')}}" alt="Logo">
                 </div>
               </div>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmo incididunt ut labore et dolore</p>
@@ -207,7 +207,7 @@
                 </ul>
               </div>
               <div class="footer-payment-img">
-                <img src="img/icons/payment-6.png" alt="Payment Image">
+                <img src="{{asset('clients_assets/images/payment-6.png')}}" alt="Payment Image">
               </div>
             </div>
           </div>
@@ -287,7 +287,7 @@
                     <div class="row">
                       <div class="col-lg-6 col-12">
                         <div class="modal-product-img">
-                          <img src="img/product/4.png" alt="#">
+                          <img src="{{asset('clients_assets/images/product4.png')}}" alt="#">
                         </div>
                       </div>
                       <div class="col-lg-6 col-12">
@@ -459,7 +459,7 @@
                           </div>
                           <div class="ltn__safe-checkout d-none">
                             <h5>Guaranteed Safe Checkout</h5>
-                            <img src="img/icons/payment-2.png" alt="Payment Image">
+                            <img src="{{asset('clients_assets/images/payment-2.png')}}" alt="Payment Image">
                           </div>
                         </div>
                       </div>
@@ -489,7 +489,7 @@
                       <div class="col-12">
                         <div class="modal-add-to-cart-content clearfix">
                           <div class="modal-product-img">
-                            <img src="img/product/1.png" alt="#">
+                            <img src="{{asset('clients_assets/images/product1.png')}}" alt="#">
                           </div>
                           <div class="modal-product-info">
                             <h5>
@@ -508,7 +508,7 @@
                         <div class="additional-info d-none--">
                           <p>We want to give you <b>10% discount</b> for your first order, <br> Use (fiama10) discount code at checkout </p>
                           <div class="payment-method">
-                            <img src="img/icons/payment.png" alt="#">
+                            <img src="{{asset('clients_assets/images/payment.png')}}" alt="#">
                           </div>
                         </div>
                       </div>
@@ -537,7 +537,7 @@
                     <div class="row">
                       <div class="col-12">
                         <div class="modal-product-img">
-                          <img src="img/product/7.png" alt="#">
+                          <img src="{{asset('clients_assets/images/product7.png')}}" alt="#">
                         </div>
                         <div class="modal-product-info">
                           <h5>
@@ -554,7 +554,7 @@
                         <div class="additional-info d-none">
                           <p>We want to give you <b>10% discount</b> for your first order, <br> Use discount code at checkout </p>
                           <div class="payment-method">
-                            <img src="img/icons/payment.png" alt="#">
+                            <img src="{{asset('clients_assets/images/logo4.png')}}icons/payment.png" alt="#">
                           </div>
                         </div>
                       </div>

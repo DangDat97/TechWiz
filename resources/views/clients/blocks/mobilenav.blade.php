@@ -53,7 +53,7 @@
       <div class="ltn__utilize-buttons ltn__utilize-buttons-2">
         <ul>
           <li>
-            <a href="account.html" title="My Account">
+            <a href="{{ route('account') }}" title="My Account">
               <span class="utilize-btn-icon">
                 <i class="icon-user"></i>
               </span> My Account </a>
@@ -69,7 +69,12 @@
             <a href="cart.html" title="Shoping Cart">
               <span class="utilize-btn-icon">
                 <i class="icon-handbag"></i>
-                <sup>5</sup>
+                <sup>
+                @if (session()->has('id'))
+                    {{ $totalCart  }}
+                @endif
+
+</sup>
               </span> Shoping Cart </a>
           </li>
         </ul>

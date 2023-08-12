@@ -51,19 +51,19 @@
               <div class="footer-menu">
                 <ul>
                   <li>
-                    <a href="account.html">My account</a>
+                    <a href="{{ route('account') }}">My account</a>
                   </li>
                   <li>
-                    <a href="checkout.html">Checkout</a>
+                    <a href="{{ route('checkout') }}">Checkout</a>
                   </li>
                   <li>
-                    <a href="contact.html">Contact us</a>
+                    <a href="{{ route('contact-us') }}">Contact us</a>
                   </li>
                   <li>
-                    <a href="cart.html">Shopping Cart</a>
+                    <a href="{{ route('viewCart') }} ">Shopping Cart</a>
                   </li>
                   <li>
-                    <a href="wishlist.html">Wishlist</a>
+                    <a href="{{ route('wishlist')  }}">Wishlist</a>
                   </li>
                 </ul>
               </div>
@@ -75,19 +75,19 @@
               <div class="footer-menu">
                 <ul>
                   <li>
-                    <a href="locations.html">Store Location</a>
+                    <a href="{{ route('contact-us') }}">Store Location</a>
                   </li>
                   <li>
-                    <a href="order-tracking.html">Orders Tracking</a>
+                    <a href="{{ route('Accessories') }}">Orders Tracking</a>
                   </li>
                   <li>
-                    <a href="product-details.html">Size Guide</a>
+                    <a href="{{ route('Accessories') }}">Size Guide</a>
                   </li>
                   <li>
-                    <a href="account.html">My account</a>
+                    <a href="{{ route('account') }}">My account</a>
                   </li>
                   <li>
-                    <a href="faq.html">FAQs</a>
+                    <a href="#">FAQs</a>
                   </li>
                 </ul>
               </div>
@@ -99,19 +99,19 @@
               <div class="footer-menu">
                 <ul>
                   <li>
-                    <a href="contact.html">Privacy Page</a>
+                    <a href="{{ route('account') }}">Privacy Page</a>
                   </li>
                   <li>
-                    <a href="about.html">About us</a>
+                    <a href="{{ route('about-us') }}">About us</a>
                   </li>
                   <li>
-                    <a href="contact.html">Careers</a>
+                    <a href="{{ route('contact-us') }}">Careers</a>
                   </li>
                   <li>
-                    <a href="faq.html">Delivery Inforamtion</a>
+                    <a href="#">Delivery Inforamtion</a>
                   </li>
                   <li>
-                    <a href="contact.html">Term & Conditions</a>
+                    <a href="{{ route('contact-us') }}">Term & Conditions</a>
                   </li>
                 </ul>
               </div>
@@ -123,19 +123,19 @@
               <div class="footer-menu">
                 <ul>
                   <li>
-                    <a href="product-details.html">Shipping Policy</a>
+                    <a href="{{ route('Accessories') }}">Shipping Policy</a>
                   </li>
                   <li>
-                    <a href="contact.html">Help & Contact Us</a>
+                    <a href="{{ route('contact-us') }}">Help & Contact Us</a>
                   </li>
                   <li>
-                    <a href="account.html">Returns & Refunds</a>
+                    <a href="{{ route('account') }}">Returns & Refunds</a>
                   </li>
                   <li>
-                    <a href="shop.html">Online Stores</a>
+                    <a href="{{ route('Accessories') }}">Online Stores</a>
                   </li>
                   <li>
-                    <a href="contact.html">Terms and Conditions</a>
+                    <a href="#">Terms and Conditions</a>
                   </li>
                 </ul>
               </div>
@@ -149,7 +149,7 @@
                   <img src="{{asset('clients_assets/images/logo4.png')}}" alt="Logo">
                 </div>
               </div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmo incididunt ut labore et dolore</p>
+              <p>Keep up with our latest news. If you need our help please contact with the following info</p>
               <div class="footer-address">
                 <ul>
                   <li>
@@ -157,7 +157,7 @@
                       <i class="icon-location-pin"></i>
                     </div>
                     <div class="footer-address-info">
-                      <p>Brooklyn, New York, United States</p>
+                      <p>Ha Noi,Viet Nam</p>
                     </div>
                   </li>
                   <li>
@@ -166,7 +166,7 @@
                     </div>
                     <div class="footer-address-info">
                       <p>
-                        <a href="tel:+0123-456789">+0123-456789</a>
+                        <a href="tel:+0123-456789">+988146552</a>
                       </p>
                     </div>
                   </li>
@@ -176,7 +176,7 @@
                     </div>
                     <div class="footer-address-info">
                       <p>
-                        <a href="mailto:example@example.com">example@example.com</a>
+                        <a href="mailto:example@example.com">Garden102@gmail.com</a>
                       </p>
                     </div>
                   </li>

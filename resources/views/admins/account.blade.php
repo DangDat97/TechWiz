@@ -1,6 +1,6 @@
 @extends('admins.layouts.app')
 @section('content')
-<div class="container-xl px-4 mt-4">
+<div class="container-xl px-4 mt-n10">
 
     <div class="row">
         <div class="col-xl-12">
@@ -17,7 +17,6 @@
                             <th>Email</th>
                             <th>Role</th>
                             <th>Acction</th>
-                            <th>Delete</th>
                         </tr>
                         @foreach ($users as $user)
                             <tr>
@@ -28,19 +27,17 @@
                                     @if ($user->roles == null)
                                         User
                                     @else
-                
+
                                     {{ $user->roles->name }}
-                
+
                                     @endif
                                 </td>
-                                <td>
-                                    <a href="{{ route('editUser',['user'=>$user]) }}">Edit</a>
-                                </td>
-                                <td>  
+                                <td style="display: flex">
+                                    <a class="btn  btn-primary btn-sm" style="margin-right: 10px" href="{{ route('editUser',['user'=>$user]) }}"><i class="fa-solid fa-pen-to-square"></i></a>
                                     <form method="POST" action="{{ route('deleteUser',['user'=>$user]) }}">
                                         @csrf
                                         @method('delete')
-                                        <input type="submit" class="btn  btn-danger btn-sm" value="Delete">
+                                        <button type="submit" class="btn btn-danger btn-sm" value="Delete"> <i class="fa-solid fa-trash"></i></button>
                                     </form>
                                 </td>
                             </tr>

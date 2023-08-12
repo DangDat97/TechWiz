@@ -53,7 +53,7 @@
                                         <li>
                                             <div class="product-price">
                                                 <span>${{ $accessory->price }}</span>
-                                           
+
                                             </div>
                                         </li>
                                         <li>
@@ -64,7 +64,7 @@
                                                     <li><a href="#"><i class="icon-star"></i></a></li>
                                                     <li><a href="#"><i class="icon-star"></i></a></li>
                                                     <li><a href="#"><i class="icon-star"></i></a></li>
-    
+
                                                 </ul>
                                             </div>
                                         </li>
@@ -73,30 +73,42 @@
                                 <div class="modal-product-brief">
                                     <p>{{ substr($accessory->use,0,250)  }}</p>
                                 </div>
-                                
+
                                 <div class="ltn__product-details-menu-2 product-cart-wishlist-btn mb-30">
                                     <ul>
-                                        
+                                            @if(Session::has('success'))
+                                                <p style="color:green;">{{ Session::get('success') }}</p>
+                                            @endif
+
+                                            @if(Session::has('errors'))
+                                                @foreach($errors->all() as $error)
+                                                <p style="color:red;">{{ Session::get('error') }}</p>
+                                                @endforeach
+                                            @endif
                                         <li>
                                             <form action="{{URL::to('addToCart')}}" method="POST">
                                                 @csrf
-                                                <input type="number" min="1" name="quantity" required>
+                                                <input class="cart-plus-minus-box" type="number" min="1" name="quantity" value="1" required>
                                                 <input type="hidden" name="id" value=" {{$accessory->id}}">
-                                                <button type="submit" name="addToCart" class="primary-btn">Add to cart</button>
+                                                <button type="submit" name="addToCart" class="theme-btn-1 btn btn-effect-1 d-add-to-cart">Add to cart</button>
                                             </form>
                                             {{-- <a href="#" class="theme-btn-1 btn btn-effect-1 d-add-to-cart" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
                                                 <span>ADD TO CART</span>
                                             </a> --}}
                                         </li>
                                         <li>
+
+                                        </li>
+
+                                        <li style="margin-left: -80px">
                                             <form action="{{URL::to('addToWatchList')}}" method="POST">
                                                 @csrf
-                                                    
+
                                                 <input type="hidden" name="id" value=" {{$accessory->id}}">
-                                                <button type="submit" name="addToWatchList" class="primary-btn"><i class="icon-heart"></i></button>
+                                                <button type="submit" name="addToWatchList" class="btn btn-effect-1 d-add-to-wishlist"><i class="icon-heart"></i></button>
                                             </form>
                                             {{-- <a href="#" class="btn btn-effect-1 d-add-to-wishlist" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
-                                               
+
                                             </a> --}}
                                         </li>
                                     </ul>
@@ -108,19 +120,19 @@
                                         <li><a href="#" title="Twitter"><i class="icon-social-twitter"></i></a></li>
                                         <li><a href="#" title="Pinterest"><i class="icon-social-pinterest"></i></a></li>
                                         <li><a href="#" title="Instagram"><i class="icon-social-instagram"></i></a></li>
-                                        
+
                                     </ul>
                                 </div>
                                 <div class="modal-product-meta ltn__product-details-menu-1 mb-30">
                                     <ul>
                                         <li><strong>SKU:</strong> <span>12345</span></li>
                                         <li>
-                                            <strong>Categories:</strong> 
+                                            <strong>Categories:</strong>
                                             <span>
                                                 <a href="{{ route('Accessories').'?type='.$accessory->type_id }}">{{strtoupper($accessory->name_type)}}</a>
                                             </span>
                                         </li>
-        
+
                                     </ul>
                                 </div>
                                 <div class="ltn__safe-checkout d-none">
@@ -392,14 +404,14 @@
                         <div class="tab-pane fade" id="liton_tab_details_1_4">
                             <div class="ltn__shop-details-tab-content-inner">
                                 <h4 class="title-2">Shipping policy for our store</h4>
-                            
+
                                 <ul>
                                     <li>1-2 business days (Typically by end of day)</li>
                                     <li><a href="#">30 days money back guaranty</a></li>
                                     <li>24/7 live support</li>
-                                  
+
                                 </ul>
-                              
+
                             </div>
                         </div>
                     </div>
@@ -424,8 +436,8 @@
             <!-- ltn__product-item -->
 
             @foreach ($accessories as $access)
-                
-           
+
+
             <div class="col-12">
                 <div class="ltn__product-item ltn__product-item-4">
                     <div class="product-img">

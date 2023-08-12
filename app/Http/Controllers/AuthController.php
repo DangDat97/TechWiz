@@ -78,6 +78,9 @@ class AuthController extends Controller
 
         if (Auth::user() && Auth::user()->role == 1) {
             $redirect = '/admin/dashboard';
+            session()->put('id', Auth::user()->id);
+            session()->put('username', Auth::user()->name);
+            session()->put('email', Auth::user()->email);
         } else {
             $redirect = '/account';
             session()->put('id', Auth::user()->id);

@@ -28,11 +28,6 @@ Route::get('/about-us', [ClientsCotroller::class, 'about_us'])->name('about-us')
 Route::get('/shop', [ClientsCotroller::class, 'shop'])->name('shop');
 Route::get('/blog', [ClientsCotroller::class, 'blog'])->name('blog');
 Route::get('/Error', [ClientsCotroller::class, 'Error'])->name('Error');
-Route::get('/wishlist', [ClientsCotroller::class, 'wishlist'])->name('wishlist');
-
-
-
-Route::get('/product-details', [ProductDetailsController::class, 'index'])->name('product-details');
 
 
 
@@ -67,24 +62,35 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'isAdmin']], function
     Route::put('/category/{category}/update', [AdminController::class, 'updateCategory'])->name('updateCategory');
     Route::delete('/category/{category}/destroy', [AdminController::class, 'deleteCategory'])->name('deleteCategory');
 
-    Route::get('/accessories', [Accessories::class, 'index'])->name('Accessories');
+    Route::get('/accessories', [Accessories::class, 'index'])->name('adminAccessories');
+    Route::get('/accessories/create', [Accessories::class, 'createAccessories'])->name('createAccessories');
+    Route::post('/accessories', [Accessories::class, 'storeAccessories'])->name('storeAccessories');
     Route::get('/accessories/{accessory}/edit', [Accessories::class, 'editAccessories'])->name('editAccessories');
-    Route::put('/accessories/{accessory}/update', [Accessories::class, 'updateAccessories'])->name('updateAccessories');
+    Route::post('/accessories/{accessory}/update', [Accessories::class, 'updateAccessories'])->name('updateAccessories');
     Route::delete('/accessories/{accessory}/destroy', [Accessories::class, 'deleteAccessories'])->name('deleteAccessories');
 
-    Route::get('/manage-role', [AdminController::class, 'manageRole'])->name('manageRole');
-    Route::post('/update-role', [AdminController::class, 'updateRole'])->name('updateRole');
+    Route::get('/orders', [Accessories::class, 'ListOrder'])->name('ListOrder');
+
+
+    Route::get('/accountAdmin', [AdminController::class, 'accountAdmin'])->name('accountAdmin');
+    Route::post('/updateAccountAdmin', [AdminController::class, 'updateAccountAdmin'])->name('updateAccountAdmin');
 });
 
 Route::get('/accessories', [Accessories::class, 'userAccessory'])->name('Accessories');
 Route::get('single/accessory/{id}', [Accessories::class, 'singleAccessory']);
 Route::post('/addToCart', [CartController::class, 'addToCart']);
-Route::post('/addToWatchList', [WatchListController::class, 'addToWatchList']);
+
+
 Route::group(['middleware' => ['web', 'isUser']], function () {
-    Route::get('/account', [UserController::class, 'account']);
-    Route::get('/cart', [CartController::class, 'index']);
+    Route::get('/account', [UserController::class, 'account'])->name('account');
+    Route::post('/updateAccount', [UserController::class, 'updateAccount'])->name('updateAccount');
+    Route::get('/cart', [CartController::class, 'index'])->name('viewCart');
     Route::post('/updateCart', [CartController::class, 'updateCart']);
     Route::get('/deleteCartItem/{id}', [CartController::class, 'deleteCartItem']);
     Route::get('/checkout', [ClientsCotroller::class, 'checkout'])->name('checkout');
     Route::get('/checkout_acction', [ClientsCotroller::class, 'checkoutAcction'])->name('checkoutAcction');
+
+    Route::get('/wishlist', [ClientsCotroller::class, 'wishlist'])->name('wishlist');
+    Route::post('/addToWatchList', [WatchListController::class, 'addToWatchList']);
+    Route::get('/deleteWishList/{id}', [WatchListController::class, 'deleteWishList'])->name('deleteWishList');
 });

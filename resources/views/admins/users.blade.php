@@ -1,7 +1,15 @@
 @extends('admins.layouts.app')
 @section('content')
+
+<div class="container-xl px-4 mt-n10">
+    <div class="row">
+        <div class="col-xl-12">
+            <!-- Account details card-->
+            <div class="card mb-4">
+                <div class="card-header">Add Users</div>
+                <div class="card-body">
     <h2 class="mb-4">User</h2>
-    <a href="{{ route('createUsers') }}">Add Users</a>
+    {{-- <a href="{{ route('createUsers') }}">Add Users</a> --}}
     <h4>Total User:{{$userCount}}</h4>
     <table class="table">
         <tr>
@@ -29,7 +37,7 @@
                 <td>
                     <a href="{{ route('editUser',['user'=>$user]) }}">Edit</a>
                 </td>
-                <td>  
+                <td>
                     <form method="POST" action="{{ route('deleteUser',['user'=>$user]) }}">
                         @csrf
                         @method('delete')
@@ -39,5 +47,9 @@
             </tr>
         @endforeach
     </table>
-
+</div>
+</div>
+</div>
+</div>
+</div>
 @endsection

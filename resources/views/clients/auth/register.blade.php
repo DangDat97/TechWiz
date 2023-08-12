@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="shortcut icon" href="{{asset('clients_assets/images/logo4.png')}}" type="image/x-icon" />
+    <title>Register</title>
     <link rel="stylesheet" href="{{asset('clients_assets/css/font-icons.css')}}">
     <!-- plugins css -->
     <link rel="stylesheet" href="{{asset('clients_assets/css/plugins.css')}}">
@@ -46,14 +47,6 @@
                                 @if(Session::has('success'))
                                     <p style="color:green;">{{ Session::get('success') }}</p>
                                 @endif
-                            </label>
-                            <label >
-                                <input type="checkbox" value="">
-                                I consent to Herboil processing my personal data in order to send personalized marketing material in accordance with the consent form and the privacy policy.
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" value="">
-                                By clicking "create account", I consent to the privacy policy.
                             </label>
                             <div class="btn-wrapper text-center mb-3">
                                 <button class="theme-btn-1 btn reverse-color btn-block" value="Register" type="submit">CREATE ACCOUNT</button>

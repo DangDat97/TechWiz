@@ -26,4 +26,10 @@ class WatchListController extends Controller
             return redirect('/login')->with('error', 'Please Login');
         }
     }
+
+    public function deleteWishList($id){
+        $item = WatchList::find($id);
+        $item->delete();
+        return redirect()->back()->with('success', 'Item has been deleteed ');
+    }
 }

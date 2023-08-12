@@ -1,6 +1,6 @@
 @extends('admins.layouts.app')
 @section('content')
-<div class="container-xl px-4 mt-4">
+<div class="container-xl px-4 mt-n10">
 
     <div class="row">
         <div class="col-xl-12">
@@ -8,7 +8,7 @@
             <div class="card mb-4">
                 <div class="card-header">Update Category</div>
                 <div class="card-body">
-                                
+
                 @if($errors->any())
                 @foreach($errors->all() as $error)
                 <p style="color:red;">{{ $error }}</p>

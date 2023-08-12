@@ -48,7 +48,7 @@
                               <h6 class="slide-sub-title ltn__secondary-color slide-title-line-2 animated">Flower & Gift</h6>
                               <h1 class="slide-title animated ">Get Up To 75%</h1>
                               <div class="slide-brief animated">
-                                <p>Happiness is the seed \n Happiness shared is the flower
+                                <p>Happiness is the seed Happiness shared is the flower
                                     .</p>
                               </div>
                               <div class="btn-wrapper animated">

@@ -25,30 +25,39 @@
             <div class="col-lg-12">
                 <div class="shoping-cart-inner">
                     <div class="shoping-cart-table table-responsive">
+                        @if(Session::has('success'))
+                            <p style="color:green;">{{ Session::get('success') }}</p>
+                        @endif
+
+                        @if(Session::has('errors'))
+                            @foreach($errors->all() as $error)
+                            <p style="color:red;">{{ Session::get('error') }}</p>
+                            @endforeach
+                        @endif
                         <table class="table">
                             <thead>
-                                <th class="cart-product-remove">X</th>
+                                <th class="cart-product-remove">Remove</th>
                                 <th class="cart-product-image">Image</th>
-                                <th class="cart-product-info">Title</th>
+                                <th class="cart-product-info">Name</th>
                                 <th class="cart-product-price">Price</th>
-                                <th class="cart-product-quantity">Quantity</th>
-                                <th class="cart-product-subtotal">Subtotal</th>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="cart-product-remove">x</td>
-                                    <td class="cart-product-image">
-                                        <a href="product-details.html"><img src="img/product/1.png" alt="#"></a>
-                                    </td>
-                                    <td class="cart-product-info">
-                                        <h4><a href="product-details.html">Brake Conversion Kit</a></h4>
-                                    </td>
-                                    <td class="cart-product-price">$85.00</td>
-                                    <td class="cart-product-stock">In Stock</td>
-                                    <td class="cart-product-add-cart">
-                                        <a class="submit-button-1" href="#" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">Add to Cart</a>
-                                    </td>
+                                @php
+                                    $total=0;
+                                @endphp
+                                @foreach ($cartItems as $cartItem)
+                                <tr class="row">
+                                        <td class="cart-product-remove col-3 pl-3"><a href="{{URL::to('deleteWishList/'.$cartItem->id)}}">x</a></td>
+                                        <td class="cart-product-image col-3">
+                                            <a href="product-details.html"><img src="{{ $cartItem->image}}" alt="#"></a>
+                                        </td>
+                                        <td class="cart-product-info col-3">
+                                            <h4><a href="product-details.html" style="width= 50px">{{substr($cartItem->name,0,30)}}</a></h4>
+                                        </td>
+                                        <td class="cart-product-price col-3 text-center">{{$cartItem->price}}</td>
+
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

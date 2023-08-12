@@ -11,7 +11,7 @@
                     <i class="icon-mail"></i> info@webmail.com </a>
                 </li>
                 <li>
-                  <a href="locations.html">
+                  <a href="#">
                     <i class="icon-placeholder"></i> 15/A, Nest Tower, NYC </a>
                 </li>
               </ul>
@@ -21,38 +21,6 @@
             <div class="top-bar-right text-right">
               <div class="ltn__top-bar-menu">
                 <ul>
-                  <li>
-                    <!-- ltn__language-menu -->
-                    <div class="ltn__drop-menu ltn__currency-menu ltn__language-menu">
-                      <ul>
-                        <li>
-                          <a href="#" class="dropdown-toggle">
-                            <span class="active-currency">English</span>
-                          </a>
-                          <ul>
-                            <li>
-                              <a href="#">Arabic</a>
-                            </li>
-                            <li>
-                              <a href="#">Bengali</a>
-                            </li>
-                            <li>
-                              <a href="#">Chinese</a>
-                            </li>
-                            <li>
-                              <a href="#">English</a>
-                            </li>
-                            <li>
-                              <a href="#">French</a>
-                            </li>
-                            <li>
-                              <a href="#">Hindi</a>
-                            </li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
                   <li>
                     <!-- ltn__social-media -->
                     <div class="ltn__social-media">
@@ -100,6 +68,7 @@
             </div>
           </div>
           <div class="col header-menu-column">
+
             <div class="header-menu d-none d-xl-block">
               <nav>
                 <div class="ltn__main-menu">
@@ -113,16 +82,27 @@
                     <li class="menu-icon">
                       <a href="#">Shop</a>
                       <ul>
-                        <li>
-                          <a href="{{route('Accessories')}}">Shop</a>
-                        </li>
+                        @php
+                                $types = \App\Models\Type::all();
+
+                        @endphp
+                        @foreach ($types as $type)
+                            <li>
+                                <a href=" {{ route('Accessories').'?type='.$type->id
+                                }}">{{ $type->name }}</a>
+                            </li>
+                        @endforeach
+
+
                       </ul>
                     </li>
                     <li class="menu-icon">
                       <a href="{{route('blog')}}">News</a>
                       <ul>
                         <li>
-                          <a href="blog.html">News</a>
+                          <a href="{{route('blog')}}">
+                            News
+                            </a>
                         </li>
                       </ul>
                     </li>
@@ -137,44 +117,6 @@
           <div class="col">
             <div class="ltn__header-options">
               <ul>
-                <li class="d-none">
-                  <!-- ltn__currency-menu -->
-                  <div class="ltn__drop-menu ltn__currency-menu">
-                    <ul>
-                      <li>
-                        <a href="#" class="dropdown-toggle">
-                          <span class="active-currency">USD</span>
-                        </a>
-                        <ul>
-                          <li>
-                            <a href="login.html">USD - US Dollar</a>
-                          </li>
-                          <li>
-                            <a href="{{route('wishlist')}}">CAD - Canada Dollar</a>
-                          </li>
-                          <li>
-                            <a href="register.html">EUR - Euro</a>
-                          </li>
-                          <li>
-                            <a href="account.html">GBP - British Pound</a>
-                          </li>
-                          <li>
-                            <a href="{{route('wishlist')}}">INR - Indian Rupee</a>
-                          </li>
-                          <li>
-                            <a href="{{route('wishlist')}}">BDT - Bangladesh Taka</a>
-                          </li>
-                          <li>
-                            <a href="{{route('wishlist')}}">JPY - Japan Yen</a>
-                          </li>
-                          <li>
-                            <a href="{{route('wishlist')}}">AUD - Australian Dollar</a>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
                 <li>
                   <!-- header-search-1 -->
                   <div class="header-search-wrap">
@@ -210,7 +152,7 @@
                                 <a href="/logout">Log Out</a>
                             </li>
                             <li>
-                                <a href="account.html">My Account</a>
+                                <a href="{{route('account')}}">My Account</a>
                             </li>
                             <li>
                                 <a href="{{route('wishlist')}}">Wishlist</a>
@@ -228,34 +170,46 @@
                     </ul>
                   </div>
                 </li>
+                @if (session()->has('id'))
                 <li>
                   <!-- header-wishlist -->
+
                   <div class="header-wishlist">
                     <a href="{{route('wishlist')}}">
                       <i class="icon-heart"></i>
                     </a>
                   </div>
-                </li>
-                <li>
-                  <!-- mini-cart 2 -->
-                  @if (session()->has('id')!=null)
-                  <div class="mini-cart-icon mini-cart-icon-2">
-                    <a href="#ltn__utilize-cart-menu" class="ltn__utilize-toggle">
-                      <span class="mini-cart-icon">
-                        <i class="icon-handbag"></i>
-                        <sup>
-                         {{session()->get('total_count')}}
-                        </sup>
-                      </span>
-                      <h6>
-                        <span>Your Cart</span>
 
-                      </h6>
-                    </a>
-                  </div>
-                  @else
-                  @endif
                 </li>
+                @endif
+                @if (session()->has('id')!=null)
+                    <li>
+                    <!-- mini-cart 2 -->
+                        @php
+                            $cart = \Illuminate\Support\Facades\DB::table('accessories')->join('carts', 'carts.accessory_id', 'accessories.id')
+                    ->select('accessories.name', 'accessories.price', 'accessories.image', 'carts.*')
+                    ->where('carts.customer_id', session()->get('id'))->get();
+                            $totalCart= $cart->count();
+                            $total=0;
+                        @endphp
+                    <div class="mini-cart-icon mini-cart-icon-2">
+                        <a href="#ltn__utilize-cart-menu" class="ltn__utilize-toggle">
+                        <span class="mini-cart-icon">
+                            <i class="icon-handbag"></i>
+                            <sup>
+                            {{  $totalCart }}
+                            </sup>
+                        </span>
+                        <h6>
+                            <span>Your Cart</span>
+
+                        </h6>
+                        </a>
+                    </div>
+
+                    </li>
+                    @else
+                @endif
                 <li>
                   <!-- Mobile Menu Button -->
                   <div class="mobile-menu-toggle d-xl-none">
@@ -285,12 +239,12 @@
       <div class="mini-cart-product-area ltn__scrollbar">
         @if (session()->has('id'))
 
-          @if (session()->get('cart')!=null)
-                @foreach ( session()->get('cart') as $item)
+          @if ($cart!=null)
+                @foreach ( $cart as $item)
                   <div class="mini-cart-item clearfix">
                     <div class="mini-cart-img">
                       <a href="{{URL::to('single/accessory/'.$item->accessory_id)}}">
-                        <img src="{{$item->image}}" alt="Image">
+                        <img style="max-width: 60px; height: 60px" src="{{$item->image}}" alt="Image">
                       </a>
                       <span class="mini-cart-item-delete">
                         <a href="{{URL::to('deleteCartItem/'.$item->id)}}"><i class="icon-trash"></i></a>
@@ -303,6 +257,9 @@
                       <span class="mini-cart-quantity">{{$item->quanity. ' x $'. $item->price}}</span>
                     </div>
                   </div>
+                  @php
+                      $total+=$item->quanity*$item->price;
+                  @endphp
                 @endforeach
             @else
           @endif
@@ -318,13 +275,16 @@
         <div class="mini-cart-sub-total">
           <h5>Subtotal:
             <span>$
-              {{session()->get('total')}}
+                @if (session()->has('id'))
+                    {{ $total }}
+                @else
+                @endif
             </span>
           </h5>
         </div>
         <div class="btn-wrapper">
-          <a href="cart.html" class="theme-btn-1 btn btn-effect-1">View Cart</a>
-          <a href="cart.html" class="theme-btn-2 btn btn-effect-2">Checkout</a>
+          <a href="{{ route('viewCart') }}" class="theme-btn-1 btn btn-effect-1">View Cart</a>
+          <a href="{{ route('checkout') }}" class="theme-btn-2 btn btn-effect-2">Checkout</a>
         </div>
         <p>Free Shipping on All Orders Over $100!</p>
       </div>

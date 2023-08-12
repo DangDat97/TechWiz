@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Accessory;
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\WatchList;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -50,7 +51,10 @@ class ClientsCotroller extends Controller
 
     public function wishlist()
     {
-        return view('clients.wishlist');
+        $cartItems = DB::table('accessories')->join('watch_lists', 'watch_lists.accessory_id', 'accessories.id')
+        ->select('accessories.name', 'accessories.price', 'accessories.image', 'watch_lists.*')
+        ->where('watch_lists.customer_id', Auth::user()->id)->get();
+        return view('clients.wishlist', compact('cartItems'));
     }
     public function checkout()
     {

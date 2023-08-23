@@ -26,44 +26,19 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="ltn__checkout-inner">
-                    <div class="ltn__checkout-single-content ltn__returning-customer-wrap">
-                        <h5>Returning customer? <a class="ltn__secondary-color" href="#ltn__returning-customer-login" data-bs-toggle="collapse">Click here to login</a></h5>
-                        <div id="ltn__returning-customer-login" class="collapse ltn__checkout-single-content-info">
-                            <div class="ltn_coupon-code-form ltn__form-box">
-                                <p>Please login your accont.</p>
-                                <form action="#" >
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="input-item input-item-name ltn__custom-icon">
-                                                <input type="text" name="ltn__name" placeholder="Enter your name">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="input-item input-item-email ltn__custom-icon">
-                                                <input type="email" name="ltn__email" placeholder="Enter email address">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button class="btn theme-btn-1 btn-effect-1 text-uppercase">Login</button>
-                                    <label class="input-info-save mb-0"><input type="checkbox" name="agree"> Remember me</label>
-                                    <p class="mt-30"><a href="register.html">Lost your password?</a></p>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                   
+
                     <div class="ltn__checkout-single-content mt-50">
                         <h4 class="title-2">Billing Details</h4>
                         <div class="ltn__checkout-single-content-info">
-                            <form action="{{URL::to('checkout_acction')}}" >
+                            <form action="{{ route('checkoutAcction')}}" method="GET">
                                 <h6>Personal Information</h6>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="input-item input-item-name ltn__custom-icon">
-                                            <input type="text" name="name" placeholder=" Name" required>
+                                            <input type="text" name="name" placeholder="Name" value="{{session()->get('name')}}">
                                         </div>
                                     </div>
-        
+
                                     <div class="col-md-6">
                                         <div class="input-item input-item-email ltn__custom-icon">
                                             <input type="email" name="email" placeholder="email address" value="{{session()->get('email')}}">
@@ -75,11 +50,11 @@
                                             <input type="hidden" name="bill" value="{{$total}}">
                                         </div>
                                     </div>
-                                   
-                            
+
+
                                 </div>
                                 <div class="row">
-                                
+
                                     <div class="col-lg-12 col-md-12">
                                         <h6>Address</h6>
                                         <div class="row">
@@ -88,18 +63,32 @@
                                                     <input type="text" name="address" placeholder="Enter Address" required>
                                                 </div>
                                             </div>
-                                        
+
                                         </div>
                                     </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <label class="checkbox-inline">
+                                            @if($errors->any())
+                                            @foreach($errors->all() as $error)
+                                                <p style="color:red;">{{ $error }}</p>
+                                                @endforeach
+                                            @endif
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            @if(Session::has('success'))
+                                                <p style="color:green;">{{ Session::get('success') }}</p>
+                                            @endif
+                                        </label>
+                                    </div>
 
-                                    
                                 </div>
+
                                 <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit">Place order</button>
                             </form>
                         </div>
                     </div>
                 </div>
-            </div>  
+            </div>
             <div class="col-lg-12 col-md-12">
                 <div class="shoping-cart-total mt-50">
                     <h4 class="title-2">Cart Totals</h4>
@@ -112,7 +101,7 @@
                             </tr>
 
                             @endforeach
-                           
+
 
                             <tr>
                                 <td>Vat</td>

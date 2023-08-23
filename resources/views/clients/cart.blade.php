@@ -56,13 +56,13 @@
                                         </td>
                                         <td class="cart-product-price">{{$cartItem->price}}</td>
                                         <td class="cart-product-quantity">
-                                            <form action="{{URL::to('updateCart')}}" method="POST">
+                                            <form style="display:flex;" action="{{URL::to('updateCart')}}" method="POST">
                                                 @csrf
                                                 <div class="cart-plus-minus">
                                                     <input type="number" value="{{$cartItem->quanity}}" name="quantity" class="cart-plus-minus-box">
                                                 </div>
-                                                <input type="hidden" name="id" value="{{$cartItem->id}}">
-                                                <input type="submit" name="update" value="Update">
+                                                <input class="display: none" type="hidden" name="id" value="{{$cartItem->id}}">
+                                                <input style="margin-left: 20px" type="submit" name="update" value="Update">
                                             </form>
                                         </td>
                                         <td class="cart-product-subtotal">${{$cartItem->price*$cartItem->quanity}}</td>
@@ -73,7 +73,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        
+
                     </div>
                     <div class="shoping-cart-total mt-50">
                         <h4>Cart Totals</h4>

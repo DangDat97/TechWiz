@@ -25,7 +25,7 @@ class Accessories extends Controller
     public function index(Request $request)
     {
 
-        $tile='Accessories';
+        $tile = 'Accessories';
         $types = Type::all();
         $query = Accessory::query();
         if (isset($request->title) && ($request->title != null)) {
@@ -45,9 +45,9 @@ class Accessories extends Controller
             $query->where('price', '<=', $request->max);
         }
         $accessories = $query->get();
-        return view('admins.accessory.index', compact('accessories', 'types','tile'));
+        return view('admins.accessory.index', compact('accessories', 'types', 'tile'));
     }
-    public function updateAccessories(Accessory $accessory,Request $request)
+    public function updateAccessories(Accessory $accessory, Request $request)
     {
         // return $request;
         $accessory = Accessory::find($accessory->id);
@@ -61,11 +61,11 @@ class Accessories extends Controller
 
 
 
-        $image= time().'.'.$request->image->extension();
+        $image = time() . '.' . $request->image->extension();
         $request->image->move(public_path('/images/product/'), $image);
-        $accessory->image=$image;
+        $accessory->image = $image;
 
-        if($accessory->save()){
+        if ($accessory->save()) {
             return redirect(route('adminAccessories'));
         }
     }
@@ -80,7 +80,7 @@ class Accessories extends Controller
     }
     public function userAccessory(Request $request)
     {
-        $types = Type::all();
+        $types = Category::all();
 
         $query = Accessory::query();
         if (isset($request->title) && ($request->title != null)) {
@@ -105,27 +105,31 @@ class Accessories extends Controller
 
     public function singleAccessory($id)
     {
-        $accessory = Accessory::Join('types', 'accessories.type_id', '=', 'types.id')
-            ->select('accessories.*', 'types.name as name_type')
+
+        $accessory = Accessory::Join('categories', 'accessories.type_id', '=', 'categories.id')
+            ->select('accessories.*', 'categories.name as name_type')
             ->where('accessories.id', '=', $id)
             ->get();
         $accessory = $accessory[0];
+        // return  $accessory['0'];
         $accessories = Accessory::all();
         return view('clients.detail_product', compact('accessory', 'accessories'));
     }
 
-    public function ListOrder(){
-        $title='Dashboard';
-        $say='Hello Admin ! Good Luck';
+    public function ListOrder()
+    {
+        $title = 'Dashboard';
+        $say = 'Hello Admin ! Good Luck';
         $orders = Order::all();
-        $countorders= Order::count();
-        return view('admins.listOrder',compact('orders','countorders','title','say'));
+        $countorders = Order::count();
+        return view('admins.listOrder', compact('orders', 'countorders', 'title', 'say'));
     }
 
-    public function createAccessories(){
+    public function createAccessories()
+    {
 
-        $category=Category::all();
-        return view('admins.accessory.createAccessories',compact('category'));
+        $category = Category::all();
+        return view('admins.accessory.createAccessories', compact('category'));
     }
 
 
@@ -144,9 +148,9 @@ class Accessories extends Controller
         $accessory->price = $request->input('price');
         $accessory->use = $request->input('use');
         $accessory->type_id = $request->input('type_id');
-        $image= time().'.'.$request->image->extension();
+        $image = time() . '.' . $request->image->extension();
         $request->image->move(public_path('/images/product/'), $image);
-        $accessory->image=$image;
+        $accessory->image = $image;
 
         $accessory->save();
         return redirect(route('adminAccessories'));

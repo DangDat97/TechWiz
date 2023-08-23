@@ -87,6 +87,8 @@ Route::group(['middleware' => ['web', 'isUser']], function () {
     Route::get('/cart', [CartController::class, 'index'])->name('viewCart');
     Route::post('/updateCart', [CartController::class, 'updateCart']);
     Route::get('/deleteCartItem/{id}', [CartController::class, 'deleteCartItem']);
+
+
     Route::get('/checkout', [ClientsCotroller::class, 'checkout'])->name('checkout');
     Route::get('/checkout_acction', [ClientsCotroller::class, 'checkoutAcction'])->name('checkoutAcction');
 

@@ -55,7 +55,7 @@
                         <div class="tab-pane fade active show" id="liton_product_grid">
                             <div class="ltn__product-tab-content-inner ltn__product-grid-view">
                                 <div class="row">
-                                 @foreach ($accessories as $accessory)   
+                                 @foreach ($accessories as $accessory)
                                     <div class="col-xl-4 col-sm-6 col-12">
                                         <div class="ltn__product-item text-center">
                                             <div class="product-img">
@@ -65,26 +65,8 @@
                                                         <li class="badge-1">Hot</li>
                                                     </ul>
                                                 </div>
-                                                <div class="product-hover-action product-hover-action-2">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
-                                                                <i class="icon-magnifier"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li class="add-to-cart">
-                                                            <a href="#" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
-                                                                <span class="cart-text d-none d-xl-block">Add to Cart</span>
-                                                                <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
-                                                                <i class="icon-shuffle"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+
+
                                             </div>
                                             <div class="product-info">
                                                 <h2 class="product-title">
@@ -105,7 +87,7 @@
                                 <div class="row">
 
 
-                                    @foreach ($accessories as $accessory)  
+                                    @foreach ($accessories as $accessory)
                                     <!-- ltn__product-item -->
                                     <div class="col-lg-12">
                                         <div class="ltn__product-item">
@@ -203,14 +185,14 @@
                         <div class="widget ltn__menu-widget">
                             <h4 class="ltn__widget-title">categories</h4>
                             <ul>
-                                @foreach ($types as $type)  
+                                @foreach ($types as $type)
                                 <li><a href="{{ route('Accessories').'?type='.$type->id }}" >{{strtoupper($type->name)}}</a></li>
                                 @endforeach
                             </ul>
                         </div>
 
 
-                        
+
                         <div class="widget ltn__banner-widget d-none">
                             <a href="shop.html"><img src="#" alt="#"></a>
                         </div>

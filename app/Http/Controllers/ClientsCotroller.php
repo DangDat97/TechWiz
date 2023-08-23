@@ -52,8 +52,8 @@ class ClientsCotroller extends Controller
     public function wishlist()
     {
         $cartItems = DB::table('accessories')->join('watch_lists', 'watch_lists.accessory_id', 'accessories.id')
-        ->select('accessories.name', 'accessories.price', 'accessories.image', 'watch_lists.*')
-        ->where('watch_lists.customer_id', Auth::user()->id)->get();
+            ->select('accessories.name', 'accessories.price', 'accessories.image', 'watch_lists.*')
+            ->where('watch_lists.customer_id', Auth::user()->id)->get();
         return view('clients.wishlist', compact('cartItems'));
     }
     public function checkout()
@@ -74,21 +74,26 @@ class ClientsCotroller extends Controller
     }
     public function checkoutAcction(Request $request)
     {
+
         if (session()->has('id')) {
+
             $item = new Order();
+
             $item->status = "Pending";
+
             $item->customer_id = session()->get('id');
-            $request->validate([
-                'email' => 'string|required|email',
-                'name' => 'string|required',
-                'phone' => 'integer|required',
-                'name' => 'string|required',
-            ]);
+            // $request->validate([
+            //     'email' => 'string|required|email',
+            //     'name' => 'string|required',
+            //     'phone' => 'integer|required',
+            //     'name' => 'string|required',
+            // ]);
             $item->bill = $request->input('bill');
             $item->address = $request->input('address');
             $item->email =  session()->get('email');
             $item->phone = $request->input('phone');
             $item->name = $request->input('name');
+
             if ($item->save()) {
                 $carts = Cart::where('customer_id', session()->get('id'))->get();
                 foreach ($carts as $cart) {
@@ -102,6 +107,8 @@ class ClientsCotroller extends Controller
                     $orderItem->save();
                     $cart->delete();
                 }
+            } else {
+                return redirect()->back()->with('error', 'Error Not Save Cart');
             }
 
             return redirect()->back()->with('success', 'Your order success');

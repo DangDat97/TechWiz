@@ -80,7 +80,7 @@
                         <a href="{{route('about-us')}}">About Us</a>
                     </li>
                     <li class="menu-icon">
-                      <a href="#">Shop</a>
+                      <a href="{{route('Accessories')}}">Shop</a>
                       <ul>
                         @php
                                 $Categories = \App\Models\Category::all();
@@ -96,7 +96,8 @@
 
                       </ul>
                     </li>
-                    <li class="menu-icon">
+
+                    {{-- <li class="menu-icon">
                       <a href="{{route('blog')}}">News</a>
                       <ul>
                         <li>
@@ -105,9 +106,15 @@
                             </a>
                         </li>
                       </ul>
-                    </li>
+                    </li> --}}
                     <li>
                         <a href="{{route('contact-us')}}">Contact Us</a>
+                    </li>
+                    <li>
+                        <a href="{{route('login')}}">Login</a>
+                    </li>
+                    <li>
+                        <a href="{{route('register')}}">Create Account</a>
                     </li>
                   </ul>
                 </div>
